@@ -53,8 +53,38 @@ PlayGame.door <- function(x){
 #example 
 PlayGame.door(door)
 
-
+#################
 #S4
 
+#Class door
+setClass(Class="door", slots = list(number="numeric"))
+
+#Check if it is a number from 1 to 3
+setValidity("door", function(object){
+  if(!(object@number %in% c(1,2,3))){
+    return("@door should be 1, 2 or 3")
+  }
+})
+
+#Example
+door <- new("door", number=1)
 
 
+#New generic Playgame
+setGeneric("PlayGame", def=function(object="door"){
+             standardGeneric("PlayGame")
+           })
+
+setMethod ("PlayGame", signature="door", definition=function(object){
+  car <- sample(1:3, 1)
+  if(object@number==car){
+    return("You win the car")
+  } 
+  else {
+    print("You win a goat")
+  }
+})
+
+
+#Example
+PlayGame(door)
