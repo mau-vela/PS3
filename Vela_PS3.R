@@ -66,8 +66,18 @@ setValidity("door", function(object){
   }
 })
 
+#Function for make the user select one door
+
+choose_door <- function(){
+  #say the user to select door
+  number <- readline(prompt="Enter door number from 1 to 3: ")
+  number <- as.numeric(number) 
+  #Return door selected from class door
+  return(new("door", number=number))
+}
+
 #Example
-door <- new("door", number=1)
+door <- choose_door()
 
 
 #New generic Playgame
@@ -75,8 +85,10 @@ setGeneric("PlayGame", def=function(object="door"){
              standardGeneric("PlayGame")
            })
 
+#Method: create function, input should be class door (signature)
 setMethod ("PlayGame", signature="door", definition=function(object){
   car <- sample(1:3, 1)
+  #win car if number selected equal to random number
   if(object@number==car){
     return("You win the car")
   } 
