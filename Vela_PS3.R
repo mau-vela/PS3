@@ -22,7 +22,7 @@ choose_door <- function(){
 
 #example
 door <- choose_door()
-
+1
 
 #b
 #Generic method Playgame
@@ -78,7 +78,7 @@ choose_door <- function(){
 
 #Example
 door <- choose_door()
-
+1
 
 #New generic Playgame
 setGeneric("PlayGame", def=function(object="door"){
